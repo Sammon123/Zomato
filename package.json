@@ -1,0 +1,23 @@
+{
+	"name": "resturant-map",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build:css": "tailwind build src/style.css -o dist/css/style.css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Sammon123/resturant-map.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Sammon123/resturant-map/issues"
+	},
+	"homepage": "https://github.com/Sammon123/resturant-map#readme",
+	"dependencies": {
+		"tailwindcss": "^1.4.6"
+	}
+}
