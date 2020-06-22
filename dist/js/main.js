@@ -1,4 +1,7 @@
-//*****************************FRONT END**************************************** */
+
+
+//*****************************FRONT 
+// END**************************************** */
 // navbar with a search and a logo
 // search links to mapping/results page 
 // home page
@@ -19,4 +22,39 @@
 //          - location
 //  sticky footer on both pages
 // 
-//  
+//  ********************************ZOMATO****************************************
+
+
+
+
+
+
+$.ajax({
+    method: "GET",
+    url: "https://developers.zomato.com/api/v2.1/categories?",
+    dataType: "json",
+    async: true,
+    beforeSend: function (xhr) {
+        xhr.setRequestHeader("user-key", "d52d38b8aaaa8a7ad6ebdebc2dbafe7b");
+    }
+})
+    .then((res) => {
+        console.log(res);
+
+    })
+    .catch((err) => {
+        console.log(err);
+
+    })
+
+
+
+
+
+
+
+// "zomatoUrl" is the url we'll use to query the API
+// begin building an object to contain our API's call's query parameters
+    // set the API key
+    // grab text the user typed into the search input, add to "zomatoObject"
+    // if the user provides a type of resturant include it in the "zomatoObject"
