@@ -31,7 +31,7 @@
 
 $.ajax({
     method: "GET",
-    url: "https://developers.zomato.com/api/v2.1/categories?",
+    url: "https://developers.zomato.com/api/v2.1/search?entity_type=city&count=25&lat=43.1888&lon=-70.8868&radius=40234&sort=real_distance&order=asc",
     dataType: "json",
     async: true,
     beforeSend: function (xhr) {
@@ -40,11 +40,9 @@ $.ajax({
 })
     .then((res) => {
         console.log(res);
-
     })
     .catch((err) => {
         console.log(err);
-
     })
 
 
