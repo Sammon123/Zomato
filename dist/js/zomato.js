@@ -48,24 +48,30 @@ function getResults() {
                 let output = '<h2>Restaurants</h2>';
                 for (let i = 0; i < restaurants.length; i++) {
                     output += `
-                        <div>
+                        <div class="list-none">
                             <h3>${data.restaurants[i].restaurant.name}</h3>
                             <img src='${data.restaurants[i].restaurant.photos_url}'>
-                            <ul>
-                                <li>${data.restaurants[i].restaurant.location.city}
-                                </li>
-                                <li>Reviews: ${data.restaurants[i].restaurant.all_reviews_count}
-                                </li>
-                                <li>${data.restaurants[i].restaurant.location.address}
-                                </li>
-                                <li>Cuisines: ${data.restaurants[i].restaurant.cuisines}
+                            <div class="hidden">
+                                <ul>
+                                    <li>
+                                    ${data.restaurants[i].restaurant.location.city}
+                                    </li>
+                                    <li>Reviews: ${data.restaurants[i].restaurant.all_reviews_count}
+                                    </li>
+                                    <li>${data.restaurants[i].restaurant.location.address}
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>Cuisines: ${data.restaurants[i].restaurant.cuisines}
                                 </li>
                                 <li>Highlights: ${data.restaurants[i].restaurant.highlights}
                                 <li>Hours: ${data.restaurants[i].restaurant.timings}
                                 </li>
-                                <li>Call: ${data.restaurants[i].restaurant.phone_numbers}
-                                </li>
-                            </ul>
+                                </ul>
+                                
+                                <p>Call: ${data.restaurants[i].restaurant.phone_numbers}
+                                </p>
+                            </div>
                         </div>
                     `
 
