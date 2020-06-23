@@ -23,27 +23,62 @@
 //  sticky footer on both pages
 // 
 //  ********************************ZOMATO****************************************
+document.getElementById('search').addEventListener('click', getResults);
 
 
-
-
-
-
-$.ajax({
-    method: "GET",
-    url: "https://developers.zomato.com/api/v2.1/search?entity_type=city&count=25&lat=43.1888&lon=-70.8868&radius=40234&sort=real_distance&order=asc",
-    dataType: "json",
-    async: true,
-    beforeSend: function (xhr) {
-        xhr.setRequestHeader("user-key", "d52d38b8aaaa8a7ad6ebdebc2dbafe7b");
-    }
-})
-    .then((res) => {
+function getResults() {
+    $.getJSON('https://ipapi.co/json/', (res) => {
         console.log(res);
+
+        $.ajax({
+            method: "GET",
+            url: `https://developers.zomato.com/api/v2.1/search?entity_type=city&lat=${res.latitude}&lon=${res.longitude}&radius=40234&sort=real_distance&order=asc`,
+            dataType: "json",
+            async: true,
+            beforeSend: ((xhr) => {
+                xhr.setRequestHeader("user-key", "d52d38b8aaaa8a7ad6ebdebc2dbafe7b");
+            })
+        })
+            .then((data) => {
+                console.log(data);
+
+                const restaurants = data.restaurants[0].restaurant.name;
+
+
+                let output = '<h2>Restaurants</h2>';
+                for (let i = 0; i < restaurants.length; i++) {
+                    output += `
+                        <div>
+                            <h3>${data.restaurants[i].restaurant.name}</h3>
+                            <img src='${data.restaurants[i].restaurant.photos_url}'>
+                            <ul>
+                                <li>${data.restaurants[i].restaurant.location.city}
+                                </li>
+                                <li>Reviews: ${data.restaurants[i].restaurant.all_reviews_count}
+                                </li>
+                                <li>${data.restaurants[i].restaurant.location.address}
+                                </li>
+                                <li>Cuisines: ${data.restaurants[i].restaurant.cuisines}
+                                </li>
+                                <li>Highlights: ${data.restaurants[i].restaurant.highlights}
+                                <li>Hours: ${data.restaurants[i].restaurant.timings}
+                                </li>
+                                <li>Call: ${data.restaurants[i].restaurant.phone_numbers}
+                                </li>
+                            </ul>
+                        </div>
+                    `
+
+                    document.getElementById('output').innerHTML = output;
+                }
+
+            })
     })
-    .catch((err) => {
-        console.log(err);
-    })
+};
+
+
+
+
 
 
 
