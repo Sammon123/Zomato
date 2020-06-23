@@ -38,6 +38,31 @@ function getResults() {
             })
         })
             .then((data) => {
+                function myMap() {
+                    var mapProp = {
+                        center: new google.maps.LatLng(
+                            restaurants[0].restaurant.location.latitude,
+                            restaurants[0].restaurant.location.longitude
+                        ),
+                        zoom: 15,
+                    };
+
+                    var map = new google.maps.Map(
+                        document.getElementById('googleMap'),
+                        mapProp
+                    );
+
+                    for (i = 0; i < restaurants.length; i++) {
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(
+                                restaurants[i].restaurant.location.latitude,
+                                restaurants[i].restaurant.location.longitude
+                            ),
+                            map: map,
+                        });
+                    }
+                }
+                myMap();
                 console.log(data);
 
                 const restaurants = data.restaurants[0].restaurant.name;
