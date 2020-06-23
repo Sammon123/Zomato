@@ -20,16 +20,14 @@
 //          - name of resturant
 //          - reviews of resturant
 //          - location
-//  sticky footer on both pages
-// 
-//  ********************************ZOMATO****************************************
 document.getElementById('search').addEventListener('click', getResults);
+document.getElementById('search').addEventListener('click', displayMap);
+
 
 
 function getResults() {
     $.getJSON('https://ipapi.co/json/', (res) => {
         console.log(res);
-
         $.ajax({
             method: "GET",
             url: `https://developers.zomato.com/api/v2.1/search?entity_type=city&lat=${res.latitude}&lon=${res.longitude}&radius=40234&sort=real_distance&order=asc`,
@@ -52,36 +50,49 @@ function getResults() {
                             <h3>${data.restaurants[i].restaurant.name}</h3>
                             <img src='${data.restaurants[i].restaurant.photos_url}'>
                             <div class="hidden">
-                                <ul>
-                                    <li>
-                                    ${data.restaurants[i].restaurant.location.city}
+                                <div class="container">
+                                    <ul>
+                                        <li>
+                                        ${data.restaurants[i].restaurant.location.city}
+                                        </li>
+                                        <li>Reviews: ${data.restaurants[i].restaurant.all_reviews_count}
+                                        </li>
+                                        <li>${data.restaurants[i].restaurant.location.address}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="container">
+                                    <ul>
+                                        <li>Cuisines: ${data.restaurants[i].restaurant.cuisines}
                                     </li>
-                                    <li>Reviews: ${data.restaurants[i].restaurant.all_reviews_count}
+                                    <li>Highlights: ${data.restaurants[i].restaurant.highlights}
+                                    <li>Hours: ${data.restaurants[i].restaurant.timings}
                                     </li>
-                                    <li>${data.restaurants[i].restaurant.location.address}
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>Cuisines: ${data.restaurants[i].restaurant.cuisines}
-                                </li>
-                                <li>Highlights: ${data.restaurants[i].restaurant.highlights}
-                                <li>Hours: ${data.restaurants[i].restaurant.timings}
-                                </li>
-                                </ul>
-                                
+                                    </ul>
+                                </div>
                                 <p>Call: ${data.restaurants[i].restaurant.phone_numbers}
                                 </p>
                             </div>
                         </div>
                     `
-
                     document.getElementById('output').innerHTML = output;
                 }
-
+                myMap();
             })
     })
-};
+}
 
+function displayMap() {
+    $.ajax({
+        method: "GET",
+        url: `https://maps.googleapis.com/maps/api/js`,
+        dataType: "json",
+        async: true,
+        beforeSend: ((xhr) => {
+            xhr.setRequestHeader("key", "AIzaSyBCsWd-NAiAybduTcHpH46UpHr1_1GxX4w");
+        })
+    })
+}
 
 
 
@@ -94,6 +105,6 @@ function getResults() {
 
 // "zomatoUrl" is the url we'll use to query the API
 // begin building an object to contain our API's call's query parameters
-    // set the API key
-    // grab text the user typed into the search input, add to "zomatoObject"
-    // if the user provides a type of resturant include it in the "zomatoObject"
+// set the API key
+// grab text the user typed into the search input, add to "zomatoObject"
+// if the user provides a type of resturant include it in the "zomatoObject"
