@@ -31,6 +31,7 @@ function getResults() {
                                 restaurants[i].restaurant.location.latitude,
                                 restaurants[i].restaurant.location.longitude
                             ),
+                            title: restaurants[i].restaurant.name,
                             map: map,
                         });
                     }
