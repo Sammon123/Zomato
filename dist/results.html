@@ -2,13 +2,37 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Results</title>
+		<link
+			href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Resturant Map</title>
 	</head>
+	<nav class="flex items-center justify-center flex-wrap p-6">
+		<div class="flex items-center flex-shrink-0 text-white mr-6">
+			<span class="font-bold text-xl">Zomato</span>
+		</div>
+
+		<div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
+			<div class="text-sm sm:flex-grow"></div>
+			<div>
+				<a
+					href="index.html"
+					class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-pink-400 hover:bg-white md:mt-0"
+					>Home</a
+				>
+			</div>
+		</div>
+	</nav>
 	<body>
-		<div id="googleMap" style="width: 55%; height: 65vh;"></div>
+		<div id="googleMap" class="show" style="width: 55%; height: 65vh;"></div>
+		<button class="search btn m-4">Search</button>
 		<div id="output"></div>
-		<button id="search">Search</button>
+		<footer class="text-red-700 text-center bg-gray-200 p-4 mt-32">
+			<p class="border-none">&copy; Peter Sammon, 2020</p>
+		</footer>
+
 		<script
 			src="https://code.jquery.com/jquery-3.5.1.min.js"
 			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="

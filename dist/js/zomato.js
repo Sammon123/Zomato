@@ -1,4 +1,5 @@
-document.getElementById('search').addEventListener('click', getResults);
+$('.search').click(getResults);
+
 function getResults() {
     $.getJSON('https://ipapi.co/json/', (res) => {
         console.log(res);
@@ -12,6 +13,8 @@ function getResults() {
             })
         })
             .then((data) => {
+                console.log(data);
+
                 const restaurants = data.restaurants
                 const myMap = function () {
                     var mapProp = {
@@ -36,14 +39,14 @@ function getResults() {
                         });
                     }
                 }
-                let output = '<h2>Restaurants</h2>';
+                let output = '<h2 style="background-color: darkred;">Restaurants</h2>';
                 for (let i = 0; i < restaurants.length; i++) {
                     output += `
-                        <div class="list-none">
-                            <h3>${data.restaurants[i].restaurant.name}</h3>
-                            <img src='${data.restaurants[i].restaurant.photos_url}'>
-                            <div class="hidden">
-                                <div class="container">
+                        <div class="container bg-gray-100">
+                            <h3 class="text-black text-xl">${data.restaurants[i].restaurant.name}</h3>
+                            <img src='https://tse1.mm.bing.net/th?id=OIP.ImMn-KIepQcOZWqS9p4XzgHaDt&pid=Api&P=0&w=324&h=163' class="spoon">
+                            <div>
+                                <div>
                                     <ul>
                                         <li>
                                         ${data.restaurants[i].restaurant.location.city}
@@ -54,7 +57,7 @@ function getResults() {
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="container">
+                                <div>
                                     <ul>
                                         <li>Cuisines: ${data.restaurants[i].restaurant.cuisines}
                                     </li>
@@ -63,7 +66,7 @@ function getResults() {
                                     </li>
                                     </ul>
                                 </div>
-                                <p>Call: ${data.restaurants[i].restaurant.phone_numbers}
+                                <p>Call: <a href="${data.restaurants[i].restaurant.menu_url}">${data.restaurants[i].restaurant.phone_numbers}</a>
                                 </p>
                             </div>
                         </div>
