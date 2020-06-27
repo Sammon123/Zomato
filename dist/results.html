@@ -9,28 +9,66 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<title>Resturant Map</title>
 	</head>
-	<nav class="flex items-center justify-center flex-wrap p-6">
-		<div class="flex items-center flex-shrink-0 text-white mr-6">
-			<span class="font-bold text-xl">Zomato</span>
-		</div>
-
-		<div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
-			<div class="text-sm sm:flex-grow"></div>
-			<div>
-				<a
-					href="index.html"
-					class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-pink-400 hover:bg-white md:mt-0"
-					>Home</a
-				>
-			</div>
-		</div>
-	</nav>
 	<body>
+		<!-- Navbar -->
+		<nav class="flex items-center justify-center flex-wrap p-6">
+			<div class="flex items-center flex-shrink-0 text-white mr-6">
+				<span class="font-bold text-xl">Zomato</span>
+			</div>
+
+			<div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
+				<div class="text-sm sm:flex-grow"></div>
+				<div>
+					<a
+						href="index.html"
+						class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-pink-400 hover:bg-white md:mt-0"
+						>Home</a
+					>
+				</div>
+			</div>
+		</nav>
+		<!-- Displaying Map -->
 		<div id="googleMap" class="show" style="width: 55%; height: 65vh;"></div>
 		<button class="search btn m-4">Search</button>
+		<!-- Displaying categories -->
+		<div id="categories"></div>
+		<!-- Displaying Output -->
 		<div id="output"></div>
-		<footer class="text-red-700 text-center bg-gray-200 p-4 mt-32">
+		<!-- Footer -->
+		<footer class="text-red-700 text-center bg-gray-200 p-4">
+			<img
+			src="https://b.zmtcdn.com//data/bdddded729eec1881d992117920afa5f1553759845.png"
+			alt="" class=>
 			<p class="border-none">&copy; Peter Sammon, 2020</p>
+			<div class="footer-cols">
+				<ul>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Careers</a></li>
+					<li><a href="#">Report Fraud</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">Code of Conduct</a></li>
+					<li><a href="#">Community</a></li>
+					<li><a href="#">Blogger Help</a></li>
+					<li><a href="#">Developers</a></li>
+					<li><a href="#">Mobile Apps</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">Add Restaurants</a></li>
+					<li><a href="#">Claim your Listing</a></li>
+					<li><a href="#">Business App</a></li>
+					<li><a href="#">Restaurant Widgets</a></li>
+					<li><a href="#">Products for Business</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">Privacy</a></li>
+					<li><a href="#">Terms</a></li>
+					<li><a href="#">Security</a></li>
+					<li><a href="#">Sitemap</a></li>
+				</ul>
+			</div>
 		</footer>
 
 		<script
